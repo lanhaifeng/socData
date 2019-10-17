@@ -1,6 +1,6 @@
 {
   "baseData":{
-    "type":[1,2,3,4,5,6,7],
+    "type":"com.mchz.socData.util.GenerateDataUtil#generateType",
     "sourceDvuid":[],
     "createTime":0
   },
@@ -12,24 +12,23 @@
     "level":[1,2,3],
     "levelDesc":[1,2,3],
     "sourceDvName":"",
-    "sourceDvIp":"com.Util#ip",
-    "sourceDvPort":0,
+    "sourceDvIp":"com.mchz.socData.util.GenerateDataUtil#generateIp",
+    "sourceDvPort":"com.mchz.socData.util.GenerateDataUtil#generatePort",
     "source":"",
     "sqlid":"",
     "target":"",
     "sqltextFormate":"",
-    "sqltextFormateDesc":"type:5,7时sqltextFormate、sqlid必须要有",
+    "sqltextFormateDesc":"type:5,7时sqltextFormate、sqlid不能为空",
     "detail":{
       "deviceInfo":{
         "deivceMac":"",
         "deviceName":"",
         "deviceOs":"",
-        "internalIp":"com.mchz.socData.util.GenerateDataUtil.generateIp",
-        "externalIp":"com.mchz.socData.util.GenerateDataUtil.generateIp"
+        "internalIp":"com.mchz.socData.util.GenerateDataUtil#generateIp",
+        "externalIp":"com.mchz.socData.util.GenerateDataUtil#generateIp"
       },
       "riskInfo":{
         "actionName":"",
-        "actionNameDesc":"delete,write,move,invoke,run",
         "processName":""
       }
     }
