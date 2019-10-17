@@ -3,6 +3,7 @@ package com.mchz.socData;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.mchz.socData.util.CreateFileUtil;
 import com.mchz.socData.util.GenerateDataUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
@@ -38,11 +39,14 @@ public class SocData {
             long endTime = Long.parseLong(args[1]); //1569859200000L
             int deviceSize = Integer.parseInt(args[2]); //10
             int size = Integer.parseInt(args[3]); //5
-
+            String fileUrl = args[4]; //"/fileStorage/download/json"
+            String fileName = args[5]; //data
 
             SocData socData = new SocData();
+            String json = socData.generateJson(beginTime, endTime, deviceSize, size).toJSONString();
+            System.out.println(json);
 
-            System.out.println(socData.generateJson(beginTime, endTime, deviceSize, size));
+            CreateFileUtil.createJsonFile(json, fileUrl, fileName);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -137,15 +141,12 @@ public class SocData {
     }
 
 
-    private static final String filePath = "src/main/resources/dataTemplate.json";
 
     public JSONObject getFile() throws IOException {
 
         //读取文件
-        String input = readJsonData(filePath);
-        if(StringUtils.isBlank(input)){
-            input = readJsonDataByInputStream();
-        }
+        String input =  readJsonDataByInputStream();
+
         if(StringUtils.isBlank(input)){
            return null;
         }
@@ -155,43 +156,6 @@ public class SocData {
         return jsonObject;
 
     }
-
-
-    /**
-     * 读取json文件并且转换成字符串
-     *
-     * @param pacthFile 文件的路径
-     * @return
-     * @throws IOException
-     */
-    public  String readJsonData(String pacthFile) throws IOException {
-        // 读取文件数据
-        //System.out.println("读取文件数据util");
-
-        StringBuffer strbuffer = new StringBuffer();
-        File myFile = new File(pacthFile);//
-
-
-        if (!myFile.exists()) {
-            System.err.println("Can't Find " + pacthFile);
-        }
-        try {
-            FileInputStream fis = new FileInputStream(pacthFile);
-            InputStreamReader inputStreamReader = new InputStreamReader(fis, "UTF-8");
-            BufferedReader in = new BufferedReader(inputStreamReader);
-
-            String str;
-            while ((str = in.readLine()) != null) {
-                strbuffer.append(str);  //new String(str,"UTF-8")
-            }
-            in.close();
-        } catch (IOException e) {
-            e.getStackTrace();
-        }
-        //System.out.println("读取文件结束util");
-        return strbuffer.toString();
-    }
-
 
     /**
      * 读取json文件并且转换成字符串
