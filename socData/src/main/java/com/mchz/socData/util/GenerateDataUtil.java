@@ -36,7 +36,7 @@ public class GenerateDataUtil {
 				{-569376768, -564133889}, // 222.16.0.0-222.95.255.255
 		};
 
-		int index = RandomUtil.generateZeroRandom(10);
+		int index = RandomUtil.generateZeroRandom(9);
 		return num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
 	}
 

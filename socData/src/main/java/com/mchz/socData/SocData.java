@@ -3,6 +3,7 @@ package com.mchz.socData;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.mchz.socData.util.GenerateDataUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -91,10 +92,8 @@ public class SocData {
     private JSONObject generateBaseData(JSONObject json, long beginTime, long endTime, List<String> dvUids) {
         JSONObject back = new JSONObject();
         JSONObject baseDatajson = json.getJSONObject("baseData");
-        List<Integer> typeInts = JSONObject.parseArray(baseDatajson.getJSONArray("type").toJSONString()
-                , Integer.class);
         //随机获取风险类型
-        back.put("type", typeInts.get(new Random().nextInt(typeInts.size())));
+        back.put("type", GenerateDataUtil.generateType());
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
@@ -107,12 +106,10 @@ public class SocData {
     private JSONObject generateExtendData(JSONObject targetJson, JSONObject json) {
         JSONObject extendDatajson = json.getJSONObject("extendData");
         targetJson.put("appname", RandomStringUtils.randomAlphanumeric(10));
-        targetJson.put("ip_address", "");
+        targetJson.put("ip_address", GenerateDataUtil.generateIp());
         targetJson.put("content", RandomStringUtils.randomAlphanumeric(10));
         targetJson.put("dbuser", RandomStringUtils.randomAlphanumeric(5));
-        List<Integer> levelInts = JSONObject.parseArray(extendDatajson.getJSONArray("level").toJSONString()
-                , Integer.class);
-        targetJson.put("level", levelInts.get(new Random().nextInt(levelInts.size())));
+        targetJson.put("level", GenerateDataUtil.generateLevel());
         targetJson.put("sourceDvName", RandomStringUtils.randomAlphanumeric(10));
         targetJson.put("sourceDvPort", new Random().nextInt(65534 - 1025) + 1025);
         targetJson.put("source", RandomStringUtils.randomAlphanumeric(10));
@@ -125,8 +122,8 @@ public class SocData {
         deviceInfo.put("deivceMac", RandomStringUtils.randomAlphanumeric(10));
         deviceInfo.put("deviceName", RandomStringUtils.randomAlphanumeric(20));
         deviceInfo.put("deviceOs", RandomStringUtils.randomAlphanumeric(5));
-        deviceInfo.put("internalIp", "");
-        deviceInfo.put("externalIp", "");
+        deviceInfo.put("internalIp", GenerateDataUtil.generateIp());
+        deviceInfo.put("externalIp", GenerateDataUtil.generateIp());
         detail.put("deviceInfo", deviceInfo);
 
         JSONObject riskInfo = new JSONObject();
