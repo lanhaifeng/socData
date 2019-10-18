@@ -46,7 +46,7 @@ public class SocData {
 
             CreateFileUtil.createJsonFile(json, fileUrl, fileName);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("生成json数据文件错误：" + ExceptionUtils.getFullStackTrace(e));
         }
     }
 
@@ -67,7 +67,7 @@ public class SocData {
             }
             return array;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("生成json数据错误：" + ExceptionUtils.getFullStackTrace(e));
         }
         return null;
     }
@@ -99,8 +99,8 @@ public class SocData {
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
-        long diff = System.currentTimeMillis() % ((long) (endTime - beginTime));
-        back.put("createTime", beginTime + diff);
+        long createTime = beginTime + (((long) (new Random().nextDouble() * (endTime - beginTime))));
+        back.put("createTime", createTime);
         return back;
 
     }
@@ -175,7 +175,7 @@ public class SocData {
             }
             br.close();
         } catch (IOException e) {
-            e.getStackTrace();
+            System.out.println("读取json模板文件错误：" + ExceptionUtils.getFullStackTrace(e));
         }
         return strbuffer.toString();
     }
