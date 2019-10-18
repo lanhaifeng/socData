@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mchz.socData.util.CreateFileUtil;
 import com.mchz.socData.util.GenerateDataUtil;
+import com.mchz.socData.util.RandomUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -101,8 +102,9 @@ public class SocData {
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
-        long diff = System.currentTimeMillis() % ((long) (endTime - beginTime));
-        back.put("createTime", beginTime + diff);
+
+        long createTime = beginTime + (((long) (new Random().nextDouble() * (endTime - beginTime))));
+        back.put("createTime", createTime);
         return back;
 
     }
