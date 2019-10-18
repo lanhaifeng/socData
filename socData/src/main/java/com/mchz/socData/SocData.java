@@ -5,18 +5,14 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.mchz.socData.util.CreateFileUtil;
 import com.mchz.socData.util.GenerateDataUtil;
-import com.mchz.socData.util.RandomUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -103,8 +99,8 @@ public class SocData {
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
-        long createTime = beginTime + (((long) (new Random().nextDouble() * (endTime - beginTime))));
-        back.put("createTime", createTime);
+        long diff = System.currentTimeMillis() % ((long) (endTime - beginTime));
+        back.put("createTime", beginTime + diff);
         return back;
 
     }
