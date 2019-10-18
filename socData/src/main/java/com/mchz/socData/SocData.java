@@ -8,6 +8,7 @@ import com.mchz.socData.util.GenerateDataUtil;
 import com.mchz.socData.util.RandomUtil;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.RandomUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -102,7 +103,6 @@ public class SocData {
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
-
         long createTime = beginTime + (((long) (new Random().nextDouble() * (endTime - beginTime))));
         back.put("createTime", createTime);
         return back;
