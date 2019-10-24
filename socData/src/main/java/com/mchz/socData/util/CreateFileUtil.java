@@ -32,9 +32,10 @@ public class CreateFileUtil {
         String fullPath = filePath + File.separator + fileName + ".json";
 
         // 生成json格式文件
+        File file = null;
         try {
             // 保证创建一个新文件
-            File file = new File(fullPath);
+            file = new File(fullPath);
             if (!file.getParentFile().exists()) { // 如果父目录不存在，创建父目录
                 file.getParentFile().mkdirs();
             }
@@ -74,6 +75,9 @@ public class CreateFileUtil {
             e.printStackTrace();
         }
 
+        if(flag){
+            System.out.println("json文件目录为：" + file.getAbsolutePath());
+        }
         // 返回是否成功的标记
         return flag;
     }
