@@ -31,6 +31,7 @@ public class SocData {
 
     public static void main(String[] args) {
         try {
+            args = buildParams(args);
             for (int i = 0; i < args.length; ++i) {
                 System.out.println(args[i]);
             }
@@ -38,17 +39,47 @@ public class SocData {
             long endTime = Long.parseLong(args[1]); //1569859200000L
             String[] devices = args[2].split(","); //设备UID 用,做分隔符
             int size = Integer.parseInt(args[3]); //5
-            String fileUrl = args[4]; //"/fileStorage/download/json"
-            String fileName = args[5]; //data
+            String fileUrl = "";//"/fileStorage/download/json"
+            String fileName = ""; //data
+            if(args.length == 6){
+                fileUrl = StringUtils.isNotBlank(args[4]) ? args[4] : "/data";
+                fileName = args[5];
+            }
+            if(args.length == 5){
+                fileUrl = "/data";
+                fileName = args[4];
+            }
 
             SocData socData = new SocData();
             String json = socData.generateJson(beginTime, endTime, devices, size).toJSONString();
             System.out.println(json);
 
-            CreateFileUtil.createJsonFile(json, fileUrl, fileName);
+            if(StringUtils.isNotBlank(fileUrl) && StringUtils.isNotBlank(fileName)){
+                CreateFileUtil.createJsonFile(json, fileUrl, fileName);
+            }
         } catch (Exception e) {
             System.out.println("生成json数据文件错误：" + ExceptionUtils.getFullStackTrace(e));
         }
+    }
+
+    //1571796842000 1571883242000 10 20 E:/ datajson
+    public static String[] buildParams(String[] args){
+        if(args == null || args.length == 0){
+            args = new String[6];
+            //beginTime
+            args[0] = "1571775242000";
+            //endTime
+            args[1] = "1571843642000";
+            //deviceSize
+            args[2] = "5";
+            //dataSize
+            args[3] = "100";
+            //fileUrl
+            args[4] = "";
+            //fileName
+            args[5] = "";
+        }
+        return args;
     }
 
 
