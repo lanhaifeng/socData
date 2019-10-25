@@ -130,8 +130,8 @@ public class SocData {
         //随机获取发生设备UID
         back.put("sourceDvuid", dvUids.get(new Random().nextInt(dvUids.size())));
         //发生时间初始化
-        long diff = System.currentTimeMillis() % ((long) (endTime - beginTime));
-        back.put("createTime", beginTime + diff);
+        long createTime = beginTime + (((long) (new Random().nextDouble() * (endTime - beginTime))));
+        back.put("createTime", createTime);
         return back;
 
     }
