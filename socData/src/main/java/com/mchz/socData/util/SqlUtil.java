@@ -1,0 +1,122 @@
+/**
+ * 版权所有：美创科技
+ * 项目名称：
+ * 版本号：
+ * 创建者：hongyuan
+ * 创建日期：2019/10/25
+ * 文件说明：
+ * 最近修改者：
+ * 最近修改日期：
+ */
+package com.mchz.socData.util;
+
+/**
+ * 类说明：sql语句随机类
+ *    TODO
+ * @author hongyuan
+ */
+public class SqlUtil {
+    public final static String[] sql = {
+            "drop table if exists 中文表;",
+            "create table 中文表(列名_1 varchar(255) CHARACTER SET gbk,Column_2 char(255),COLUMN_3 INT PriMary kEY,S_列名 DATE);",
+            "insert into 中文表 values ('测试中文列一','测试中文列二',123,'2018-05-12');",
+            "insert into 中文表 values ('测试中文列一','测试中文列二',124,'9999-12-31');",
+            "INSERT INTO 中文表(列名_1,COLUMN_3) values ('测试中文列二',100);",
+            "UPDATE  中文表 set 列名_1='测试中文列的内容',COLUMN_3=188 WHERE 列名_1='测试中文列一' AND COLUMN_3=124;",
+            "drop table if exists 中文表9;",
+            "RENAME TABLE 中文表 TO 中文表9;",
+            "select 列名_1,S_列名 from 中文表9;",
+            "delete FROM 中文表9 WHERE 列名_1='测试中文列一' and Column_2='测试中文列二' and COLUMN_3=123;",
+            "select * FROM 中文表9 WHERE COLUMN_3=100 AND 列名_1='测试中文列二';",
+            "select SUM(COLUMN_3)总数SUM,COUNT(*)数量COUNT,MIN(COLUMN_3)最小数,MAX(COLUMN_3)最大数,AVG(COLUMN_3) AS 平均数 FROM 中文表9; ",
+            "drop table if exists 中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66;",
+            "create table 中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66(列一 varchar(255) CHARACTER SET gbk,列二 char(255),列三 INT,列四 DATE);",
+            "insert into 中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66 values ('测试中文列一','测试中文列二',123,'2018-05-20 13:14:59.9999999');",
+            "insert into  中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66 values ('1测试中文列一中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表','测试中文列二',123,'2018-05-12 20:20:58');",
+            "select * from 中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66;",
+            "CREATE VIEW 拾佰仟_视图 AS select * FROM 中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表中文表123123123中文66;",
+            "select * from 拾佰仟_视图;",
+            "drop view 拾佰仟_视图;",
+            "drop table if exists 中文表_用于更新1;",
+            "create table 中文表_用于更新1(列一 varchar(255) CHARACTER SET gbk,列二 char(50),列三 INT,列四 DATE);",
+            "ALTER TABLE 中文表_用于更新1 add col_列名_3 int PRImary key;",
+            "ALTER TABLE 中文表_用于更新1 MODIFY 列二 char(255);",
+            "insert into  中文表_用于更新1 (col_列名_3)values (1) ;",
+            "insert into  中文表_用于更新1 (列一,col_列名_3)values ('仅对部分列插入值',2) ;",
+            "select * from 中文表_用于更新1;",
+            "CREATE UNIQUE INDEX 唯一索引_中文表更新1 ON 中文表_用于更新1 (列一);",
+            "DROP INDEX 唯一索引_中文表更新1 on 中文表_用于更新1;",
+            "TRUNCATE table 中文表_用于更新1;",
+            "drop table 中文表_用于更新1;",
+            "drop table if exists 表1;	",
+            "create table 表1(工号 INT NOT NULL,名字 varchar(50) NOT NULL,地址 varchar(100));	",
+            "ALTER TABLE 表1 MODIFY 地址 varchar(100) NOT NULL;	",
+            "select  CONSTRAINT_NAME,constraint_type from  INFORMATION_SCHEMA.TABLE_CONSTRAINTS where table_name in ('表1');	",
+            "drop table if exists 表2;	",
+            "create table 表2(工号 INT,名字 varchar(50),地址 varchar(100),号码 char(100),CONSTRAINT 表2_工号_约束 UNIQUE (工号),CONSTRAINT 表2_名字_约束 UNIQUE (名字));",
+            "ALTER TABLE 表2 ADD CONSTRAINT 表2_号码_约束 UNIQUE (号码);",
+            "select  CONSTRAINT_NAME,constraint_type from  INFORMATION_SCHEMA.TABLE_CONSTRAINTS where table_name in ('表2');",
+            "drop table if exists 表3;	",
+            "create table 表3(工号 INT,	名字 varchar(50),	地址 varchar(100),	号码 char(100),	CONSTRAINT 表3_工号_约束 PRIMARY KEY (工号)	);	",
+            "ALTER TABLE 表3 ADD CONSTRAINT 表3_工号_fk FOREIGN KEY(工号) REFERENCES 表2(工号);	",
+            "ALTER TABLE 表3 ADD CONSTRAINT 表3_工号_check CHECK(工号>120);	",
+            "select  CONSTRAINT_NAME,constraint_type from  INFORMATION_SCHEMA.TABLE_CONSTRAINTS where table_name in ('表3');	",
+            "ALTER TABLE 表3 DROP FOREIGN KEY 表3_工号_fk;	",
+            "select  CONSTRAINT_NAME,constraint_type from  INFORMATION_SCHEMA.TABLE_CONSTRAINTS where table_name in ('表3');	",
+            "create table all_types (COL_1_varchar varchar(30),COL_2_char char(30),COL_3_bigint bigint,COL_4_binary binary(30),COL_5_varbinary varbinary(30),COL_11_text text,COL_14_integer integer,COL_15_int int,COL_16_smallint smallint,COL_17_tinyint tinyint,COL_19_numeric numeric,COL_20_decimal decimal(20,5),COL_22_float float,COL_25_bit bit,COL_28_datetime datetime,COL_31_timestamp timestamp,COL_36_image image,COL_44_ntext ntext,COL_45_uniqueidentifier uniqueidentifier,COL_46_varchar varchar(40),COL_47_varcharmax varchar(max),COL_48_varbinarymax varbinary(max),COL_49_xml xml);",
+            "INSERT INTO all_types values ('COL_1_varchar','COL_2_char(20)',20,0x20,0x200,'COL_10_text',1234567,1234567,12345,123,123456789,1234567,1.23456789,1,'1990-09-10 11:20:01.013',DEFAULT);",
+            "drop table if EXISTS score;",
+            "CREATE TABLE score(sno INT PRIMARY KEY AUTO_INCREMENT,course varchar(20),sscore SMALLINT); ",
+            "SHOW CREATE TABLE score;  ",
+            "DESC score;",
+            "ALTER TABLE score ADD startTime DATE NOT NULL;  ",
+            "ALTER TABLE score MODIFY course varchar(50);  ",
+            "ALTER TABLE score CHANGE startTime endTime DATE; ",
+            "ALTER TABLE score DROP startTime;  ",
+            "select * from score;",
+            "INSERT INTO score(course,sscore)values('语文',80); ",
+            "UPDATE score SET sscore=90 WHERE sno=1;  ",
+            "delete FROM score WHERE sno=1;",
+            "DROP TABLE score;",
+            "drop table if EXISTS student;",
+            "CREATE TABLE student(sno varchar(10),sname varchar(10),ssex ENUM('男','女'),sage INT,sdept varchar(10),primary key(sno));",
+            "INSERT INTO student values('201215121','李勇',1,20,'CS'),('201215122','刘晨',2,19,'CS'),('201215123','王敏',2,18,'MA'),('201215125','张立',1,19,'IS');",
+            "select * from student;",
+            "drop table if EXISTS course;",
+            "CREATE TABLE course(cno varchar(10),cname varchar(10)  CHARACTER SET gbk,ccredit INT,primary key(cno));",
+            "INSERT INTO course(cno,cname,ccredit) values(1,'CS', 4),(2,'CS',4),(3,'MA',4),(4,'IS',4);",
+            "drop table if EXISTS sc;",
+            "CREATE TABLE sc (sno varchar(10),cno INT,grade INT);",
+            "INSERT INTO sc values('201215121',1, 92),('201215121',2, 85),('201215121',3, 88),('201215122',1, 90),('201215122',2, 80);",
+            "select * from student;",
+            "select * from student where sage>=20;",
+            "select * from student,sc where student.sno = sc.sno;",
+            "select * from student INNER JOIN sc ON student.sno=sc.sno;",
+            "select * from student JOIN sc ON student.sno=sc.sno;",
+            "select * from student CROSS JOIN sc USING(sno);",
+            "select * from student LEFT OUTER JOIN sc ON student.sno=sc.sno;",
+            "select * from student LEFT JOIN sc ON student.sno=sc.sno;",
+            "select * from sc RIGHT OUTER JOIN student ON student.sno=sc.sno;",
+            "select * from student LEFT OUTER JOIN sc ON student.sno=sc.sno UNION ALL select * from student RIGHT OUTER JOIN sc ON student.sno=sc.sno;",
+            "select student.sno,student.sname,student.ssex,student.sage,student.sdept,sc.cno,sc.grade from student,sc where student.sno = sc.sno;",
+            "select * from student NATURAL JOIN sc;",
+            "select * from student NATURAL LEFT JOIN sc;",
+            "select * from sc NATURAL RIGHT JOIN student;",
+            "select * from course AS course1,course AS course2 where course1.cno = course2.cpno AND course1.cno = 4;",
+            "select * from student where sdept IN (select sdept from student where sname='刘晨');",
+            "select * from student where sno IN (select sno from sc where cno IN (select cno from course where cname='信息系统') );",
+            "select * from sc AS x where grade >= (select AVG(grade) from sc AS y where x.sno AND y.sno);",
+            "select * from student,(select sno from SC where cno=1) AS tempSC where student.sno = tempSC.sno;",
+            "select * from student where sdept='CS' union ALL select * from student where sage<=19;",
+            "select * from student where sdept='CS' union select * from student where sage<=19;",
+            "select a.* from student AS a INNER JOIN student AS b ON a.sno=b.sno where a.sdept='CS' and b.sage<=19;",
+            "select a.* from student AS a LEFT JOIN student AS b ON a.sno=b.sno where a.sdept='CS' and b.sage>19 and b.sno IS NOT NULL;",
+            "select * from a_table a inner join b_table b on a.a_id = b.b_id;",
+            "select a.* from a_table a left join b_table b on a.a_id = b.b_id;",
+            "select b.* from a_table a right outer join b_table b on a.a_id = b.b_id;",
+            "INSERT INTO a_table values('1','李勇','总裁部'),('2','刘晨','秘书部'),('3','王敏','设计部'),('4','张立','运营部');",
+            "INSERT INTO b_table values('2','刘晨','秘书部'),('3','王敏','设计部'),('5','刘敏','人事部'),('6','黄立','生产部');",
+            "INSERT INTO man values('1','貂蝉','2'),('2','曹操','1');"
+    };
+
+}

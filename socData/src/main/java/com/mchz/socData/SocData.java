@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -35,13 +36,13 @@ public class SocData {
             }
             long beginTime = Long.parseLong(args[0]);//1567267200000L
             long endTime = Long.parseLong(args[1]); //1569859200000L
-            int deviceSize = Integer.parseInt(args[2]); //10
+            String[] devices = args[2].split(","); //设备UID 用,做分隔符
             int size = Integer.parseInt(args[3]); //5
             String fileUrl = args[4]; //"/fileStorage/download/json"
             String fileName = args[5]; //data
 
             SocData socData = new SocData();
-            String json = socData.generateJson(beginTime, endTime, deviceSize, size).toJSONString();
+            String json = socData.generateJson(beginTime, endTime, devices, size).toJSONString();
             System.out.println(json);
 
             CreateFileUtil.createJsonFile(json, fileUrl, fileName);
@@ -51,14 +52,14 @@ public class SocData {
     }
 
 
-    public JSON generateJson(long beginTime, long endTime, int deviceSize, int size) {
+    public JSON generateJson(long beginTime, long endTime, String[] devices, int size) {
         if (endTime <= beginTime) {
             System.err.println("endTime <=  beginTime endTime:" + endTime+" beginTime:"+beginTime);
         }
 
         try {
             JSONObject json = this.getFile();
-            List<String> dvUids = getDvuids(deviceSize);
+            List<String> dvUids = Arrays.asList(devices);
             JSONArray array = new JSONArray();
             for (int i = 0; i < size; i++) {
                 JSONObject back = generateBaseData(json, beginTime, endTime, dvUids);
