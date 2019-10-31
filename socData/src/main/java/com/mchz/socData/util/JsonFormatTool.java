@@ -10,6 +10,11 @@
  */
 package com.mchz.socData.util;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.exception.ExceptionUtils;
+
+import java.io.*;
+
 /**
  * 类说明：
  *    TODO
@@ -109,5 +114,39 @@ public class JsonFormatTool {
             result.append(SPACE);
         }
         return result.toString();
+    }
+
+    /**
+     * 2019/10/29 16:22
+     * 读取json文件
+     *
+      * @param fileName
+     * @author lanhaifeng
+     * @return
+     */
+    public static String readJsonFile(String fileName) {
+        String jsonStr = "";
+        try {
+            fileName = JsonFormatTool.class.getResource(fileName).toString();
+            if(StringUtils.isNotBlank(fileName) && fileName.startsWith("file:/")){
+                fileName = fileName.substring(6);
+            }
+            File jsonFile = new File(fileName);
+            FileReader fileReader = new FileReader(jsonFile);
+
+            Reader reader = new InputStreamReader(new FileInputStream(jsonFile),"utf-8");
+            int ch = 0;
+            StringBuffer sb = new StringBuffer();
+            while ((ch = reader.read()) != -1) {
+                sb.append((char) ch);
+            }
+            fileReader.close();
+            reader.close();
+            jsonStr = sb.toString();
+            return jsonStr;
+        } catch (IOException e) {
+            System.out.println("读取json文件错误：" + ExceptionUtils.getFullStackTrace(e));
+            return null;
+        }
     }
 }

@@ -117,4 +117,14 @@ public class GenerateDataUtil {
 	public static int generatePort(){
 		return RandomUtil.generateRangeRandom(1024, 65535);
 	}
+
+	/**
+	 * 生成随机时间
+	 * @param startTime
+	 * @param endTime
+	 * @return
+	 */
+	public static long generateTime(long startTime, long endTime){
+		return RandomUtil.generateRangeRandom(startTime, endTime);
+	}
 }

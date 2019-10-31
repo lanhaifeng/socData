@@ -1,0 +1,163 @@
+[
+  [
+    {
+      "name": "type",
+      "formatDescs": [
+        {
+          "defaultValue": "3",
+          "generateDataUtilFun": "",
+          "formatCount": 12
+        }
+      ]
+    },
+    {
+      "name": "detail.riskInfo.processName",
+      "formatDescs": [
+        {
+          "defaultValue": "a",
+          "generateDataUtilFun": "",
+          "formatCount": 12
+        }
+      ]
+    },
+    {
+      "name": "detail.deviceInfo.deivceMac",
+      "formatDescs": [
+        {
+          "defaultValue": "MgHYScpmQa",
+          "generateDataUtilFun": "",
+          "formatCount": 12
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "name": "type",
+      "formatDescs": [
+        {
+          "defaultValue": "3",
+          "generateDataUtilFun": "",
+          "formatCount": 25
+        }
+      ]
+    },
+    {
+      "name": "detail.riskInfo.processName",
+      "formatDescs": [
+        {
+          "defaultValue": "a",
+          "generateDataUtilFun": "",
+          "formatCount": 15
+        },
+        {
+          "defaultValue": "h",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ,
+    {
+      "name": "detail.deviceInfo.deivceMac",
+      "formatDescs": [
+        {
+          "defaultValue": "MgHYScpmQa",
+          "generateDataUtilFun": "",
+          "formatCount": 15
+        },
+        {
+          "defaultValue": "MgHYScpmQh",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "name": "type",
+      "formatDescs": [
+        {
+          "defaultValue": "3",
+          "generateDataUtilFun": "",
+          "formatCount": 20
+        }
+      ]
+    },
+    {
+      "name": "detail.riskInfo.processName",
+      "formatDescs": [
+        {
+          "defaultValue": "a",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        },
+        {
+          "defaultValue": "b",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ,
+    {
+      "name": "detail.deviceInfo.deivceMac",
+      "formatDescs": [
+        {
+          "defaultValue": "MgHYScpmQa",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        },
+        {
+          "defaultValue": "MgHYScpmQb",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "name": "type",
+      "formatDescs": [
+        {
+          "defaultValue": "3",
+          "generateDataUtilFun": "",
+          "formatCount": 20
+        }
+      ]
+    },
+    {
+      "name": "detail.riskInfo.processName",
+      "formatDescs": [
+        {
+          "defaultValue": "b",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        },
+        {
+          "defaultValue": "g",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ,
+    {
+      "name": "detail.deviceInfo.deivceMac",
+      "formatDescs": [
+        {
+          "defaultValue": "MgHYScpmQb",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        },
+        {
+          "defaultValue": "MgHYScpmQg",
+          "generateDataUtilFun": "",
+          "formatCount": 10
+        }
+      ]
+    }
+  ]
+]

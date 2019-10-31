@@ -1,0 +1,29 @@
+{
+  "sqlid": "ww8ZJ8FPZ0",
+  "sqltextFormate": "select * from tab",
+  "level": 1,
+  "dbuser": "socusr",
+  "ip_address": "123.235.207.0",
+  "source": "wps.exe",
+  "type": 4,
+  "content": "权限变更",
+  "sourceDvName": "LAPTOP-MUAB4997",
+  "target": "192.168.240.142:1521",
+  "appname": "Navicat",
+  "createTime": 1567610481238,
+  "sourceDvPort": 6781,
+  "sourceDvuid": "noah-2019-10-25-110CFA19-B3C2-4CD4-B26E-1CF49CF2008D",
+  "detail": {
+    "riskInfo": {
+      "processName": "svchost.exe",
+      "actionName": "invoke"
+    },
+    "deviceInfo": {
+      "deivceMac": "MgHYScpmQz",
+      "deviceOs": "Windows Server",
+      "deviceName": "a",
+      "internalIp": "121.77.86.97",
+      "externalIp": "123.233.120.194"
+    }
+  }
+}

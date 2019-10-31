@@ -1,5 +1,7 @@
 package com.mchz.socData.util;
 
+import org.apache.commons.math3.random.RandomDataGenerator;
+
 import java.util.Random;
 
 /**
@@ -24,6 +26,19 @@ public class RandomUtil {
 	public static int generateRangeRandom(int start, int end){
 		Random rand = new Random();
 		return rand.nextInt(end - start + 1) + start;
+	}
+
+	/**
+	 * 2019/10/17 11:20
+	 * 生成范围为[start,end]的随机数
+	 *
+	 * @param max			最大随机数
+	 * @param min			最小随机数
+	 * @author lanhaifeng
+	 * @return int
+	 */
+	public static long generateRangeRandom(long min, long max){
+		return new RandomDataGenerator().nextLong(min, max);
 	}
 
 	/**
